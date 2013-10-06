@@ -1,1 +1,7 @@
 *.mcs
+*.log
+*.hex
+*.cof
+*.map
+*.o
+*.mcw
