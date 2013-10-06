@@ -29,7 +29,7 @@ unsigned int ac4, ac5, ac6;
 long pressure;
 char p[10];
 float altitude;
-char lalt[10], ralt[3];
+char lalt[10], ralt[4];
 long lWhole = 0;            // Store digits left of decimal	
 unsigned long ulPart = 0;   // Store digits right of decimal
 unsigned char mode=0;   // Oversampling mode
@@ -62,9 +62,13 @@ void High_Int_Handler (void) {      // Interrupciones de alta prioridad
         // Bloque I2C
         pressure = readPressure();
         ltoa(pressure,p);
-        altitude = calcAltitude(101325,pressure);
+        altitude = calcAltitude(101325, pressure);
         lWhole = (long)(altitude); ltoa(lWhole,lalt);
-        ulPart = (long)(altitude*MULTIPLIER) - lWhole*MULTIPLIER; ultoa(ulPart,ralt);
+        if (lWhole < 0)
+            ulPart = lWhole*MULTIPLIER - (long)(altitude*MULTIPLIER);
+        else
+            ulPart = (long)(altitude*MULTIPLIER) - lWhole*MULTIPLIER;
+        ultoa(ulPart,ralt);
         putsUSART(p); TXREG = ','; putsUSART(lalt); TXREG = '.'; putsUSART(ralt);
         TXREG = 0x0D;
         TXREG = 0x0A;

@@ -11,3 +11,5 @@
 *.suo
 *~
 *.pyproj
+# Log files:
+*.csv
