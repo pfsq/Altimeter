@@ -1,3 +1,4 @@
+# Files from MPLAB:
 *.mcs
 *.log
 *.hex
@@ -5,3 +6,8 @@
 *.map
 *.o
 *.mcw
+# Files from PTVS:
+*.sln
+*.suo
+*~
+*.pyproj
