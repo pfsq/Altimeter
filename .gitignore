@@ -6,10 +6,12 @@
 *.map
 *.o
 *.mcw
+
 # Files from PTVS:
 *.sln
 *.suo
 *~
 *.pyproj
+
 # Log files:
 *.csv
