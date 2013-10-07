@@ -233,7 +233,7 @@ void main (void) {
     INTCONbits.GIE = 1;             // Se habilitan las interrupciones a nivel global
 
     /* Configuración Temporizador 0 */
-    T0CON = 0b10001001;             // Configuración temp. 0 (en marcha, 16 bits, mode temp., sin prescalar)
+    T0CON = 0b10000001;             // Configuración temp. 0 (en marcha, 16 bits, mode temp., c/ prescalar: 4)
     INTCONbits.TMR0IE = 1;          // Se habilita la interrupción del temp. 0
     TMR0H = 15536/256;              // Se recarga el valor del temp. 0 para un temporización de 100ms
     TMR0L = 15536%256;              //  Valor rec. = 65536 - (50*e-03*4*e+06)/4= 15536	
