@@ -14,9 +14,12 @@ def main():
 
     # Open serial port
     if _platform == 'linux' or _platform == 'linux2':
-        ser = serial.Serial('/dev/ttyUSB0',9600,timeout=1)
+        ser = serial.Serial(port='/dev/ttyUSB0')
     elif _platform == 'win32':
-        ser = serial.Serial('COM10',9600,timeout=1)
+        ser = serial.Serial(port='COM10')
+    ser.baudrate(9600)
+    ser.timeout(1)
+    ser.open()
 
     # Get date and time
     now = dt.now()
